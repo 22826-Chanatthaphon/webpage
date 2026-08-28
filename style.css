@@ -1,759 +1,1082 @@
-
 /* ========================================
-CSS Variables (Underwater Ocean Theme - Redefined)
-======================================= /
-:root {
---primary-900: #012169; / Deepest Abyssal Blue /
---primary-700: #1E6091; / Cobalt Sea /
---primary-400: #009688; / Vibrant Turquoise /
---primary-200: #A2D9CE; / Pale Seafoam /
---primary-50:  #F8FDF9; / Water Mist/Pale Sand /
---accent-coral: #FF7F50; / Living Coral Accent /
---accent-pearl: #E7D8C9; / Pearl White Accent /
---white:       #FFFFFF; / Pure White - for pure highlights /
---text-dark:   #2C3E50; / Still dark, slightly desaturated /
---text-light:  #708090; / Slate Gray for lighter text /
---bg-color:    #F0F8FF; / Surface Water Clear */
 
---shadow-sm: 0 4px 6px rgba(1, 33, 105, 0.05);
---shadow-md: 0 10px 20px rgba(1, 33, 105, 0.1);
---shadow-hover: 0 15px 30px rgba(1, 33, 105, 0.15);
+   CSS Variables (โทนสีฟ้า-ขาว และการตั้งค่าหลัก)
 
---radius-md: 20px; /* Softer, more organic */
---radius-lg: 30px; /* Softer, more organic */
---transition: all 0.5s ease; /* Slower, more flowing transitions */
-}
-
-/* ========================================
-Base Styles & Reset
 ======================================== */
 
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Kanit', sans-serif;
+:root {
+
+    --primary-900: #0D47A1;
+
+    --primary-700: #1976D2;
+
+    --primary-400: #42A5F5;
+
+    --primary-200: #90CAF9;
+
+    --primary-50:  #E3F2FD;
+
+    --white:       #FFFFFF;
+
+    --text-dark:   #2C3E50;
+
+    --text-light:  #546E7A;
+
+    --bg-color:    #F4F7FB;
+
+    
+
+    --shadow-sm: 0 4px 6px rgba(13, 71, 161, 0.05);
+
+    --shadow-md: 0 10px 20px rgba(13, 71, 161, 0.1);
+
+    --shadow-hover: 0 15px 30px rgba(13, 71, 161, 0.15);
+
+    
+
+    --radius-md: 16px;
+
+    --radius-lg: 24px;
+
+    --transition: all 0.3s ease;
+
 }
+
+
+
+/* ========================================
+
+   Base Styles & Reset
+
+======================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Kanit', sans-serif;
+
+}
+
+
 
 body {
-/* Magnificent Underwater Scene Background with Caustics and Subtle Texture */
-background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-200) 50%, var(--primary-700) 100%), url('subtle-water-pattern.svg');
-background-size: cover, auto;
-background-blend-mode: overlay, normal;
-color: var(--text-dark);
-line-height: 1.6;
-overflow-x: hidden;
-position: relative;
+
+    background-color: var(--bg-color);
+
+    color: var(--text-dark);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
 }
 
-/* Water Caustics Overlay */
-body::before {
-content: '';
-position: fixed;
-top: 0; left: 0; width: 100%; height: 100%;
-background-image: url('water-caustics.png');
-background-size: 50%;
-opacity: 0.1;
-z-index: -1;
-animation: waterCaustics 6s infinite alternate linear;
-}
 
-@keyframes waterCaustics {
-0%, 100% { background-position: 0 0; }
-50% { background-position: 50% 50%; }
-}
 
 a {
-text-decoration: none;
-color: inherit;
-transition: var(--transition);
+
+    text-decoration: none;
+
+    color: inherit;
+
+    transition: var(--transition);
+
 }
+
+
 
 .container {
-max-width: 1100px;
-margin: 0 auto;
-padding: 0 20px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+
 }
+
+
 
 .page-padding {
-padding-top: 120px; /* Ve'n distance from Sticky Nav */
-padding-bottom: 60px;
-min-height: calc(100vh - 200px);
+
+    padding-top: 120px; /* เว้นระยะจาก Sticky Nav */
+
+    padding-bottom: 60px;
+
+    min-height: calc(100vh - 200px);
+
 }
+
+
 
 .bg-gradient {
-/* Still a gradient, but themed */
-background: linear-gradient(135deg, var(--white) 0%, var(--primary-50) 100%);
+
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--primary-50) 100%);
+
 }
+
+
 
 .mb-4 { margin-bottom: 2rem; }
+
 .mt-4 { margin-top: 2rem; }
+
 .center-text { text-align: center; }
 
+
+
 /* ========================================
-Typography
+
+   Typography
+
 ======================================== */
-h1, h2, h3 { color: var(--primary-900); font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
-h2 { font-size: 2.2rem; margin-bottom: 15px; }
-h3 { font-size: 1.5rem; margin-bottom: 10px; }
+
+h1, h2, h3 { color: var(--primary-900); font-weight: 600; }
+
 p { color: var(--text-light); }
 
-.highlight { color: var(--accent-coral); font-weight: 600; }
+
+
+.highlight { color: var(--primary-700); }
+
+
 
 .section-header {
-text-align: center;
-margin-bottom: 50px;
-}
-.section-header h2 {
-font-size: 2.2rem;
-position: relative;
-display: inline-block;
-margin-bottom: 10px;
-}
-.section-header h2::after {
-content: '';
-position: absolute;
-width: 60%;
-height: 6px; /* Slightly thicker and more prominent */
-background: var(--primary-400);
-bottom: -8px;
-left: 20%;
-border-radius: 3px;
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
 }
 
-/* ========================================
-Components
-======================================== /
-.card {
-/ Style as ancient seabed stones or smooth organic shells */
-background: var(--white);
-border-radius: var(--radius-md);
-padding: 24px;
-box-shadow: var(--shadow-sm);
-transition: var(--transition);
-border: 1px solid var(--primary-50);
+.section-header h2 {
+
+    font-size: 2.2rem;
+
+    position: relative;
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
 }
+
+.section-header h2::after {
+
+    content: '';
+
+    position: absolute;
+
+    width: 50%;
+
+    height: 4px;
+
+    background: var(--primary-400);
+
+    bottom: -5px;
+
+    left: 25%;
+
+    border-radius: 2px;
+
+}
+
+
+
+/* ========================================
+
+   Components
+
+======================================== */
+
+.card {
+
+    background: var(--white);
+
+    border-radius: var(--radius-md);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+
+}
+
+
 
 .card:hover {
-box-shadow: var(--shadow-md);
-border-color: var(--primary-200);
-transform: translateY(-8px);
+
+    box-shadow: var(--shadow-md);
+
 }
+
+
 
 .hover-lift:hover {
-transform: translateY(-8px);
-box-shadow: var(--shadow-hover);
+
+    transform: translateY(-8px);
+
+    box-shadow: var(--shadow-hover);
+
 }
+
+
 
 /* Buttons */
+
 .btn {
-display: inline-block;
-padding: 12px 28px;
-border-radius: 50px;
-font-weight: 500;
-cursor: pointer;
-text-align: center;
-transition: var(--transition);
+
+    display: inline-block;
+
+    padding: 12px 28px;
+
+    border-radius: 50px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    text-align: center;
+
 }
+
+
 
 .btn-primary {
-/* Luminous Shimmer of the Deep Sea */
-background: linear-gradient(135deg, var(--primary-700), var(--primary-900));
-color: var(--white);
-box-shadow: 0 4px 15px rgba(30, 96, 145, 0.4);
+
+    background: var(--primary-700);
+
+    color: var(--white);
+
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.4);
+
 }
+
 .btn-primary:hover {
-background: linear-gradient(135deg, var(--primary-900), var(--primary-700));
-transform: translateY(-3px) scale(1.02);
-box-shadow: 0 6px 20px rgba(30, 96, 145, 0.6);
+
+    background: var(--primary-900);
+
+    transform: translateY(-3px);
+
+    color: var(--white);
+
 }
+
+
 
 .btn-secondary {
-/* Pale Sea Salt */
-background: var(--primary-50);
-color: var(--primary-900);
-border: 2px solid var(--primary-200);
+
+    background: var(--primary-50);
+
+    color: var(--primary-900);
+
 }
+
 .btn-secondary:hover {
-background: var(--primary-200);
-border-color: var(--primary-700);
-color: var(--primary-700);
-transform: translateY(-3px) scale(1.02);
+
+    background: var(--primary-200);
+
+    transform: translateY(-3px);
+
 }
+
+
 
 .btn-outline {
-/* Turquoise Current */
-border: 2px solid var(--primary-400);
-color: var(--primary-400);
-}
-.btn-outline:hover {
-background: var(--primary-400);
-border-color: var(--primary-900);
-color: var(--white);
-transform: translateY(-3px) scale(1.02);
+
+    border: 2px solid var(--primary-700);
+
+    color: var(--primary-700);
+
 }
 
-/* ========================================
-Navigation (Water Clarity & Organic Forms)
-======================================== /
-.glass-nav {
-position: fixed;
-top: 0; left: 0; right: 0;
-background: rgba(255, 255, 255, 0.85); / Keep blur, just with themed border /
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-border-bottom: 2px solid rgba(162, 217, 206, 0.3); / Seafoam border */
-box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-z-index: 1000;
-padding: 15px 0;
+.btn-outline:hover {
+
+    background: var(--primary-700);
+
+    color: var(--white);
+
 }
+
+
+
+/* ========================================
+
+   Navigation (Glassmorphism)
+
+======================================== */
+
+.glass-nav {
+
+    position: fixed;
+
+    top: 0; left: 0; right: 0;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+    z-index: 1000;
+
+    padding: 15px 0;
+
+}
+
+
 
 .nav-container {
-max-width: 1100px;
-margin: 0 auto;
-padding: 0 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
 }
+
+
 
 .logo {
-font-size: 1.5rem;
-font-weight: 700;
-color: var(--primary-900);
+
+    font-size: 1.5rem;
+
+    font-weight: 700;
+
+    color: var(--primary-900);
+
 }
+
 .logo span { color: var(--primary-400); }
 
+
+
 nav {
-display: flex;
-gap: 20px;
+
+    display: flex;
+
+    gap: 20px;
+
 }
+
 nav a {
-font-size: 1rem;
-font-weight: 500;
-padding: 8px 16px;
-border-radius: 20px;
-color: var(--text-dark);
+
+    font-size: 1rem;
+
+    font-weight: 500;
+
+    padding: 8px 16px;
+
+    border-radius: 20px;
+
+    color: var(--text-dark);
+
 }
+
 nav a:hover, nav a.active {
-background: var(--primary-50);
-color: var(--primary-700);
-transform: scale(1.05);
-transition: var(--transition);
+
+    background: var(--primary-50);
+
+    color: var(--primary-700);
+
 }
+
+
 
 /* ========================================
-Index (Hero Section) - Magnificent Underwater World
-======================================== /
+
+   Index (Hero Section)
+
+======================================== */
+
 .hero-section {
-min-height: 100vh;
-display: flex;
-align-items: center;
-padding-top: 80px;
-position: relative;
-/ Hero is the most magnificent /
-background: linear-gradient(135deg, var(--white) 0%, var(--primary-50) 50%, var(--primary-200) 100%), url('subtle-water-pattern.svg');
-background-size: cover, auto;
-background-blend-mode: overlay, normal;
-overflow: hidden; / Important for moving elements */
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-top: 80px;
+
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-50) 100%);
+
 }
 
-/* Hero caustics overlay */
-.hero-section::before {
-content: '';
-position: absolute;
-top: 0; left: 0; width: 100%; height: 100%;
-background-image: url('water-caustics.png');
-background-size: cover;
-opacity: 0.15;
-z-index: 0;
-animation: waterCausticsHero 10s infinite linear;
-}
 
-@keyframes waterCausticsHero {
-0% { background-position: 0 0; }
-100% { background-position: 100% 100%; }
-}
 
 .hero-container {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 40px;
-align-items: center;
-position: relative;
-z-index: 1; /* Above caustics */
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+
 }
 
-/* Define moving creatures - use pseudo-elements strategically */
-.hero-container::before,
-.hero-container::after,
-.hero-image::before,
-.hero-image::after {
-content: '';
-position: absolute;
-z-index: -1;
-transition: all 1s ease;
-}
 
-/* Large Sea Turtle swimming slowly */
-.hero-container::before {
-width: 60px; height: 60px;
-background-image: url('sea-turtle-icon.png');
-background-size: contain;
-opacity: 0.7;
-top: 20%; left: 10%;
-animation: turtleSwim 15s infinite ease-in-out;
-}
-
-/* School of small fish moving quickly */
-.hero-container::after {
-width: 100px; height: 100px;
-background-image: url('fish-school-icon.png');
-background-size: contain;
-opacity: 0.6;
-top: 70%; left: 80%;
-animation: fishSchoolSwim 8s infinite linear;
-}
-
-/* Pulsating Jellyfish in the back */
-.hero-image::before {
-width: 50px; height: 80px;
-background-image: url('jellyfish-icon.png');
-background-size: contain;
-opacity: 0.4;
-top: -10px; right: 20px;
-animation: jellyPulse 12s infinite ease-in-out;
-}
-
-/* Swaying Kelp on the bottom right */
-.hero-image::after {
-width: 80px; height: 150px;
-background-image: url('swaying-kelp.svg');
-background-size: contain;
-opacity: 0.8;
-bottom: 0; right: 0;
-animation: kelpSway 5s infinite linear;
-}
-
-/* Animations */
-@keyframes turtleSwim {
-0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7; }
-25% { transform: translateY(-5px) translateX(20px) rotate(1deg); opacity: 0.5; }
-50% { transform: translateY(0) translateX(40px) rotate(0deg); opacity: 0.7; }
-75% { transform: translateY(-5px) translateX(20px) rotate(-1deg); opacity: 0.5; }
-}
-
-@keyframes fishSchoolSwim {
-0% { transform: translateX(-150px) rotate(0deg); opacity: 0.6; }
-50% { transform: translateX(150px) rotate(0deg); opacity: 0.3; }
-100% { transform: translateX(-150px) rotate(0deg); opacity: 0.6; }
-}
-
-@keyframes jellyPulse {
-0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-50% { transform: translateY(-10px) scale(1.1); opacity: 0.2; }
-}
-
-@keyframes kelpSway {
-0%, 100% { transform: translateY(0) rotate(0deg); }
-25% { transform: translateY(-5px) rotate(3deg); }
-50% { transform: translateY(0) rotate(0deg); }
-75% { transform: translateY(-5px) rotate(-3deg); }
-}
 
 .badge {
-background: var(--accent-coral); /* Living Coral badge */
-color: var(--white);
-padding: 6px 16px;
-border-radius: 20px;
-font-size: 0.9rem;
-font-weight: 500;
-display: inline-block;
-margin-bottom: 15px;
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    background: var(--primary-50);
+
+    color: var(--primary-900);
+
+    padding: 6px 16px;
+
+    border-radius: 20px;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    display: inline-block;
+
+    margin-bottom: 15px;
+
 }
+
+
 
 .hero-text h1 {
-font-size: 3rem;
-line-height: 1.2;
-margin-bottom: 20px;
+
+    font-size: 3rem;
+
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+
 }
+
+
 
 .hero-desc {
-font-size: 1.1rem;
-margin-bottom: 30px;
+
+    font-size: 1.1rem;
+
+    margin-bottom: 30px;
+
 }
+
+
 
 .hero-buttons {
-display: flex;
-gap: 15px;
+
+    display: flex;
+
+    gap: 15px;
+
 }
+
+
 
 .hero-image {
-position: relative;
-text-align: center;
+
+    position: relative;
+
+    text-align: center;
+
 }
 
-/* Original Blob remains, just as a shimmering reef formation /
+
+
 .blob-bg {
-position: absolute;
-top: 50%; left: 50%;
-transform: translate(-50%, -50%);
-width: 350px; height: 350px;
-background: linear-gradient(135deg, var(--primary-200), var(--primary-400), var(--primary-700));
-border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-z-index: -1;
-animation: blob-anim-reef 6s infinite alternate ease-in-out;
-opacity: 0.3; / Subtle shimmering reef backdrop */
+
+    position: absolute;
+
+    top: 50%; left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 350px; height: 350px;
+
+    background: linear-gradient(135deg, var(--primary-200), var(--primary-400));
+
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+
+    z-index: 1;
+
+    animation: blob-anim 6s infinite alternate ease-in-out;
+
 }
+
+
 
 .hero-image img {
-position: relative;
-z-index: 2;
-width: 300px;
-height: 300px;
-object-fit: cover;
-border-radius: 50%;
-border: 8px solid var(--accent-pearl); /* Frame with ancient pearl */
-box-shadow: var(--shadow-md), 0 0 10px rgba(162, 217, 206, 0.4);
-transition: transform 0.5s;
-}
-.hero-image img:hover {
-transform: scale(1.05) rotate(2deg);
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 300px;
+
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 8px solid var(--white);
+
+    box-shadow: var(--shadow-md);
+
+    transition: transform 0.5s;
+
 }
 
-@keyframes blob-anim-reef {
-0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+.hero-image img:hover {
+
+    transform: scale(1.05) rotate(2deg);
+
 }
+
+
+
+@keyframes blob-anim {
+
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+
+}
+
+
 
 /* ========================================
-Profile Page - Framed by Organic Coral
+
+   Profile Page
+
 ======================================== */
+
 .profile-layout {
-display: grid;
-grid-template-columns: 1fr 2fr;
-gap: 30px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 2fr;
+
+    gap: 30px;
+
 }
+
+
 
 .profile-sidebar {
-text-align: center;
-position: relative;
+
+    text-align: center;
+
 }
-.profile-sidebar::before {
-content: '';
-position: absolute;
-width: 250px; height: 250px;
-top: 50%; left: 50%;
-transform: translate(-50%, -50%);
-background-image: url('coral-circle.svg');
-background-size: contain;
-opacity: 0.15;
-z-index: -1;
-}
+
 .profile-pic {
-width: 200px; height: 200px;
-border-radius: 50%;
-object-fit: cover;
-margin-bottom: 20px;
-border: 5px solid var(--primary-50);
-box-shadow: var(--shadow-sm), 0 0 10px rgba(162, 217, 206, 0.2);
+
+    width: 200px; height: 200px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-bottom: 20px;
+
+    border: 5px solid var(--primary-50);
+
 }
+
 .profile-name { font-size: 1.5rem; margin-bottom: 5px; }
+
 .profile-role { color: var(--primary-400); font-weight: 500; }
 
-.about-card { margin-bottom: 30px; border-color: var(--primary-200); }
+
+
+.about-card { margin-bottom: 30px; }
+
 .about-card h3 { margin-bottom: 10px; }
 
+
+
 .info-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 20px;
-}
-.info-box {
-display: flex;
-flex-direction: column;
-padding: 20px;
-border-color: var(--primary-50);
-}
-.info-label {
-font-size: 0.9rem;
-color: var(--text-light);
-margin-bottom: 5px;
-}
-.info-value {
-font-size: 1.1rem;
-font-weight: 600;
-color: var(--primary-900);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
 }
 
-/* ========================================
-Education Page (Timeline of Discovery Pearls & Ancient Scrolls)
-======================================== */
-.edu-highlight { margin-bottom: 40px; }
-.edu-highlight h3 { margin-bottom: 20px; text-align: center; }
-.highlight-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 20px;
-text-align: center;
+.info-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 20px;
+
 }
+
+.info-label {
+
+    font-size: 0.9rem;
+
+    color: var(--text-light);
+
+    margin-bottom: 5px;
+
+}
+
+.info-value {
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+
+    color: var(--primary-900);
+
+}
+
+
+
+/* ========================================
+
+   Education Page (Timeline & Table)
+
+======================================== */
+
+.edu-highlight { margin-bottom: 40px; }
+
+.edu-highlight h3 { margin-bottom: 20px; text-align: center; }
+
+.highlight-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    text-align: center;
+
+}
+
 .hl-title { display: block; font-size: 0.9rem; color: var(--text-light); }
+
 .hl-desc { display: block; font-size: 1.1rem; font-weight: 600; color: var(--primary-700); }
 
+
+
 .timeline-container {
-max-width: 800px;
-margin: 0 auto 40px auto;
-}
-.timeline {
-border-left: 4px solid var(--accent-pearl); /* Strand of Pearls line /
-padding-left: 30px;
-margin-left: 20px;
-}
-.timeline-item {
-position: relative;
-margin-bottom: 40px; / More space /
-border-color: var(--primary-200); / Ancient learning cards /
-}
-.timeline-dot {
-position: absolute;
-width: 20px; height: 20px;
-background: var(--primary-700); / Anchor Point /
-border: 4px solid var(--white);
-border-radius: 50%;
-left: -44px; / Adjust to fit /
-top: 24px;
-box-shadow: 0 0 0 4px var(--primary-50);
-}
-.timeline-date {
-display: inline-block;
-background: var(--accent-pearl); / Pale Pearl box */
-color: var(--primary-700);
-padding: 4px 12px;
-border-radius: 20px;
-font-size: 0.85rem;
-margin-bottom: 10px;
-font-weight: 600;
-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    max-width: 800px;
+
+    margin: 0 auto 40px auto;
+
 }
 
-.table-container { overflow-x: auto; border-color: var(--primary-200); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.timeline {
+
+    border-left: 4px solid var(--primary-200);
+
+    padding-left: 30px;
+
+    margin-left: 20px;
+
+}
+
+.timeline-item {
+
+    position: relative;
+
+    margin-bottom: 30px;
+
+}
+
+.timeline-dot {
+
+    position: absolute;
+
+    width: 20px; height: 20px;
+
+    background: var(--primary-700);
+
+    border: 4px solid var(--white);
+
+    border-radius: 50%;
+
+    left: -66px; /* 30(pad) + 24(card pad) + 12(half dot) */ /* ปรับให้พอดี */
+
+    top: 20px;
+
+    box-shadow: 0 0 0 4px var(--primary-50);
+
+}
+
+.timeline-item { left: 0; }
+
+.timeline-item .timeline-dot { left: -44px; top: 24px; } /* ปรับตำแหน่งจุด */
+
+.timeline-date {
+
+    display: inline-block;
+
+    background: var(--primary-50);
+
+    color: var(--primary-700);
+
+    padding: 4px 12px;
+
+    border-radius: 20px;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 10px;
+
+    font-weight: 600;
+
+}
+
+
+
+.table-container { overflow-x: auto; }
+
 .edu-table {
-width: 100%;
-border-collapse: collapse;
-background: var(--white);
+
+    width: 100%;
+
+    border-collapse: collapse;
+
 }
+
 .edu-table th, .edu-table td {
-padding: 15px;
-text-align: left;
-border-bottom: 1px solid var(--primary-50);
+
+    padding: 15px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--primary-50);
+
 }
-.edu-table th { background: var(--primary-50); color: var(--primary-900); border-radius: var(--radius-md) var(--radius-md) 0 0; }
-.edu-table tr:hover { background: rgba(162, 217, 206, 0.1); }
+
+.edu-table th { background: var(--primary-50); color: var(--primary-900); }
+
+.edu-table tr:hover { background: var(--bg-color); }
+
+
 
 /* ========================================
-Hobby Page - Underwater Interests
+
+   Hobby Page
+
 ======================================== */
+
 .emoji-big { font-size: 3rem; display: block; margin-bottom: 10px; }
+
 .highlight-text { font-size: 1.2rem; font-weight: 500; color: var(--primary-700); }
 
+
+
 .hobby-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 25px;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 25px;
+
 }
+
 .hobby-card {
-text-align: center;
-transition: var(--transition);
-border-color: var(--primary-200);
-position: relative;
-overflow: hidden;
-}
-/* Small plant filigree in the hobby card corner */
-.hobby-card::before {
-content: '';
-position: absolute;
-bottom: -10px; right: -10px;
-width: 50px; height: 50px;
-background-image: url('kelp-filigree.svg');
-background-size: contain;
-opacity: 0.1;
-z-index: 0;
+
+    text-align: center;
+
+    transition: var(--transition);
+
 }
 
 .hobby-card:hover {
-transform: translateY(-10px);
-box-shadow: var(--shadow-hover);
-border-bottom: 4px solid var(--primary-400); /* Highlighted by current */
-transition: all 0.5s ease-out;
-}
-.hobby-icon {
-font-size: 2.5rem;
-width: 70px; height: 70px;
-line-height: 70px;
-background: var(--primary-50);
-border-radius: 50%;
-margin: 0 auto 15px auto;
-position: relative;
-z-index: 1;
+
+    transform: translateY(-10px);
+
+    box-shadow: var(--shadow-hover);
+
+    border-bottom: 4px solid var(--primary-400);
+
 }
 
+.hobby-icon {
+
+    font-size: 2.5rem;
+
+    width: 70px; height: 70px;
+
+    line-height: 70px;
+
+    background: var(--primary-50);
+
+    border-radius: 50%;
+
+    margin: 0 auto 15px auto;
+
+}
+
+
+
 /* ========================================
-Contact Page - Anchors & Connections
-======================================== /
+
+   Contact Page
+
+======================================== */
+
 .contact-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 25px;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 25px;
+
 }
-.contact-card { text-align: center; border-color: var(--primary-200); }
+
+.contact-card { text-align: center; }
+
 .contact-icon {
-font-size: 2.5rem;
-margin-bottom: 15px;
-transition: transform 0.5s ease;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 15px;
+
 }
-.contact-card:hover .contact-icon {
-transform: rotate(360deg) scale(1.1); / Anchor rotates */
-}
+
 .contact-card h3 { margin-bottom: 10px; }
+
 .contact-card p { margin-bottom: 20px; }
 
+
+
 .cta-section {
-text-align: center;
-background: linear-gradient(135deg, var(--primary-900), var(--primary-700), var(--primary-400)); /* Deep Sea Geyser/Current */
-color: var(--white);
-border-radius: var(--radius-lg);
-box-shadow: var(--shadow-md), 0 0 10px rgba(0, 150, 136, 0.3);
+
+    text-align: center;
+
+    background: linear-gradient(135deg, var(--primary-900), var(--primary-700));
+
+    color: var(--white);
+
 }
-.cta-section h2 { color: var(--white); margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-.cta-section p { color: var(--accent-pearl); margin-bottom: 25px; opacity: 0.8; }
+
+.cta-section h2 { color: var(--white); margin-bottom: 15px; }
+
+.cta-section p { color: var(--primary-50); margin-bottom: 25px; }
+
+
 
 /* ========================================
-Footer (Bottom of the Deep Abyssal Blue with Bioluminescence)
-======================================== /
-footer {
-background: var(--primary-900); / Darkest abyssal blue /
-color: var(--white);
-padding: 60px 0 20px 0;
-margin-top: 60px;
-position: relative;
-}
-/ Sub subtle bioluminescence in the footer back */
-footer::before {
-content: '';
-position: absolute;
-top: 0; left: 0; width: 100%; height: 100%;
-background-image: url('bioluminescence.png');
-background-size: cover;
-opacity: 0.05;
-z-index: 0;
-animation: bioluminescencePulse 10s infinite alternate ease-in-out;
-}
 
-@keyframes bioluminescencePulse {
-0%, 100% { opacity: 0.05; }
-50% { opacity: 0.02; }
+   Footer
+
+======================================== */
+
+footer {
+
+    background: var(--primary-900);
+
+    color: var(--white);
+
+    padding: 60px 0 20px 0;
+
+    margin-top: 60px;
+
 }
 
 .footer-content {
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 30px;
-margin-bottom: 40px;
-position: relative;
-z-index: 1;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+
 }
+
 .footer-info h3 { color: var(--white); margin-bottom: 10px; }
-.footer-info p { color: var(--accent-pearl); opacity: 0.8; }
+
+.footer-info p { color: var(--primary-200); }
+
+
 
 .footer-links {
-display: flex;
-gap: 20px;
+
+    display: flex;
+
+    gap: 20px;
+
 }
-.footer-links a { color: var(--accent-pearl); }
-.footer-links a:hover { color: var(--primary-200); transform: scale(1.05); }
+
+.footer-links a { color: var(--primary-200); }
+
+.footer-links a:hover { color: var(--white); }
+
+
 
 .footer-bottom {
-text-align: center;
-padding-top: 20px;
-border-top: 1px solid rgba(255,255,255,0.1);
-color: var(--accent-pearl);
-font-size: 0.9rem;
-opacity: 0.7;
-position: relative;
-z-index: 1;
+
+    text-align: center;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    color: var(--primary-200);
+
+    font-size: 0.9rem;
+
 }
 
+
+
 /* ========================================
-Animations (Organic, Slow Flow)
+
+   Animations
+
 ======================================== */
+
 .fade-in-up {
-animation: fadeInUpOcean 1s ease forwards;
+
+    animation: fadeInUp 0.8s ease forwards;
+
 }
 
-@keyframes fadeInUpOcean {
-from { opacity: 0; transform: translateY(40px) scale(0.95); }
-to { opacity: 1; transform: translateY(0) scale(1); }
+
+
+@keyframes fadeInUp {
+
+    from { opacity: 0; transform: translateY(30px); }
+
+    to { opacity: 1; transform: translateY(0); }
+
 }
+
+
 
 /* ========================================
-Responsive Design (Media Queries)
-======================================== /
+
+   Responsive Design (Media Queries)
+
+======================================== */
+
 @media screen and (max-width: 900px) {
-.hero-container {
-grid-template-columns: 1fr;
-text-align: center;
+
+    .hero-container {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+    }
+
+    .hero-buttons {
+
+        justify-content: center;
+
+    }
+
+    .hero-image {
+
+        grid-row: 1; /* ดันรูปภาพขึ้นไปด้านบนในมือถือ */
+
+    }
+
+    .profile-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
 }
-.hero-buttons {
-justify-content: center;
-}
-.hero-image {
-grid-row: 1; / Push image to the top on mobile */
-}
-.profile-layout {
-grid-template-columns: 1fr;
-}
-}
+
+
 
 @media screen and (max-width: 768px) {
-/* Navigation Stack on mobile /
-.nav-container {
-flex-direction: column;
-gap: 15px;
-}
-nav {
-flex-wrap: wrap;
-justify-content: center;
-}
-.page-padding {
-padding-top: 160px; / Increase distance to hide Nav on mobile */
-}
-.info-grid {
-grid-template-columns: 1fr;
-}
-.highlight-grid {
-grid-template-columns: 1fr;
-}
-.timeline {
-margin-left: 10px;
-}
-.hero-text h1 {
-font-size: 2.2rem;
-}
-.blob-bg {
-width: 250px; height: 250px;
-}
-.hero-image img {
-width: 220px; height: 220px;
+
+    /* Navigation Stack บนมือถือ */
+
+    .nav-container {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+    nav {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+    .page-padding {
+
+        padding-top: 160px; /* เพิ่มระยะหลบ Nav ที่สูงขึ้นบนมือถือ */
+
+    }
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .highlight-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .timeline {
+
+        margin-left: 10px;
+
+    }
+
+    .hero-text h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+    .blob-bg {
+
+        width: 250px; height: 250px;
+
+    }
+
+    .hero-image img {
+
+        width: 220px; height: 220px;
+
+    }
+
 }
 
-/* On mobile, slow moving elements should be less prominent */
-.hero-container::before,
-.hero-container::after,
-.hero-image::before,
-.hero-image::after {
-    opacity: 0.3;
-}
